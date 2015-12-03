@@ -3,7 +3,17 @@
   <header class="row">
     <div class="col-md-10 col-md-offset-1">
       <h2>{{object.title}}</h2>
-      <small title="{{ object.published|date:"F jS, Y, f A"  }}">{{ object.published|date:"F jS, Y"  }} by {{object.author}}</small>
+      <div class="pull-left">
+        <small title="{{ object.published|date:"F jS, Y, f A"  }}">{{ object.published|date:"F jS, Y"  }} by {{object.author}}</small>
+      </div>
+      <div class="pull-right">
+        {% if user.is_authenticated and perms.blog.can_change_blogpost %}
+        <a href="{% url "admin:blog_blogpost_change" object.pk %}" role="button" class="btn btn-default btn-xs">
+          <i class="fa fa-pencil-square"></i>
+        </a>
+        {% endif %}
+      </div>
+      <div class="clearfix"></div>
     </div>
   </header>
   <div class="row marg-t3 marg-b3">

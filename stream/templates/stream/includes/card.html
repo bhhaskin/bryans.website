@@ -7,6 +7,11 @@
     </div>
     <div class="pull-right">
       <small title="{{ object.created|date:"F jS, Y, f A"  }}">{{ object.created|naturaltime  }}</small>
+      {% if user.is_authenticated and perms.stream.can_change_drop %}
+      <a href="{% url "admin:stream_drop_change" object.pk %}" role="button" class="btn btn-default btn-xs">
+        <i class="fa fa-pencil-square"></i>
+      </a>
+      {% endif %}
     </div>
     <div class="clearfix"></div>
   </div>

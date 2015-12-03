@@ -9,15 +9,30 @@
   </div>
 </section>
 
-<section class="container-fluid">
+<section class="container-fluid hidden-xs hidden-sm">
   {% if objects %}
   {% for row in objects|rows_distributed:4 %}
     <div class="col-md-4">
     {% for object in row %}
-      {% include "stream/includes/card.html" %}
+        {% include "stream/includes/card.html" %}
     {% endfor %}
     </div>
   {% endfor %}
+  {% else %}
+  <p class="lead text-center text-muted">Looks Like Nothing Is Here...</p>
+  {% endif %}
+</section>
+
+<section class="container-fluid hidden-md hidden-lg">
+  {% if objects %}
+    <div class="row">
+    {% for object in objects %}
+      <div class="col-sm-12">
+      {% include "stream/includes/card.html" %}
+      </div>
+    {% endfor %}
+      </div>
+
   {% else %}
   <p class="lead text-center text-muted">Looks Like Nothing Is Here...</p>
   {% endif %}

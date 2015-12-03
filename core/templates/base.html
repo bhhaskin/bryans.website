@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load account %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -50,9 +51,34 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
               {% if user.is_authenticated %}
-                <li><a href="{% url 'account_logout' %}"><i class="fa fa-sign-out"></i> Sign Out</a></li>
+
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-plus-square"></i></a>
+                <ul class="dropdown-menu">
+                  {% if perms.stream.can_add_drop%}
+                  <li><a href="{% url "admin:stream_drop_add" %}"><i class="fa fa-tint"></i> Drop</a></li>
+                  {% endif %}
+                  {% if perms.blog.can_add_blogpost%}
+                  <li><a href="{% url "admin:blog_blogpost_add" %}"><i class="fa fa-file-text"></i> Post</a></li>
+                  {% endif %}
+                </ul>
+              </li>
+
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> {% user_display user %}</a>
+                <ul class="dropdown-menu">
+                  <li><a href="{% url "account_change_password" %}"><i class="fa fa-key"></i> Change Password</a></li>
+                  {% if user.is_staff %}
+                  <li role="separator" class="divider"></li>
+                  <li><a href="{% url 'admin:index' %}" target="_blank"><i class="fa fa-tasks"></i> Admin</a></li>
+                  {% endif %}
+                  <li role="separator" class="divider"></li>
+                  <li><a href="{% url 'account_logout' %}"><i class="fa fa-sign-out"></i> Sign Out</a></li>
+                </ul>
+              </li>
+
               {% else %}
-              {% include 'account/includes/dropdown.html' %}
+              {% include 'account/includes/logindropdown.html' %}
               {% endif %}
             </ul>
           </div><!-- /.navbar-collapse -->
