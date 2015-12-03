@@ -8,6 +8,7 @@ from django.contrib.flatpages import views
 urlpatterns = patterns('',
     url(r'^', include('core.urls')),
     url(r'^blog/', include('blog.urls', namespace="blog")),
+    url(r'^stream/', include('stream.urls', namespace="stream")),
     url(r'^account/', include('allauth.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^(?P<url>.*/)$', views.flatpage),

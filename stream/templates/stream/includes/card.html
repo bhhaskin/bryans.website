@@ -1,0 +1,28 @@
+ {% load humanize %}
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="pull-left">
+      <h3 class="panel-title"><small>{{object.author}} <i class="fa fa-angle-double-right"></i></small> {% if object.attachment %}{{object.attachment.content_type.name|title}}{% else %}Text{% endif %}</h3>
+    </div>
+    <div class="pull-right">
+      <small title="{{ object.created|date:"F jS, Y, f A"  }}">{{ object.created|naturaltime  }}</small>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="panel-body">
+    {% if object.attachment %}
+      {% if object.attachment.content_type.model == "blogpost" %}
+        {% include "blog/includes/minpost.html" with object=object.attachment.content_object %}
+      {% endif %}
+      {% if object.attachment.content_type.model == "droplink" %}
+        {% include "stream/includes/link.html" with object=object.attachment.content_object %}
+      {% endif %}
+    <hr>
+    {% endif %}
+    {{object.content|safe}}
+  </div>
+  <div class="panel-footer">
+
+  </div>
+</div>

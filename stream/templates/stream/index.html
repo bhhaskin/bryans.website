@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load partition %}
+
+{% block content %}
+<section class="container">
+  <div class="page-header">
+    <h1><small>My</small> Stream</h1>
+    <p class="lead">A collection of things I find cool, intresting or awesome arranged in a social network like stream.</p>
+  </div>
+</section>
+
+<section class="container-fluid">
+  {% if objects %}
+  {% for row in objects|rows_distributed:4 %}
+    <div class="col-md-4">
+    {% for object in row %}
+      {% include "stream/includes/card.html" %}
+    {% endfor %}
+    </div>
+  {% endfor %}
+  {% else %}
+  <p class="lead text-center text-muted">Looks Like Nothing Is Here...</p>
+  {% endif %}
+</section>
+
+
+{% endblock %}

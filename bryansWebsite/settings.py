@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
     'post',
     'blog',
+    'stream',
     'core',
     'django_cleanup',
     'tinymce',
