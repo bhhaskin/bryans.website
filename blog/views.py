@@ -1,9 +1,10 @@
-from django.views.generic import ListView, DateDetailView
+from django.views.generic import ArchiveIndexView, DateDetailView
 from django.http import Http404
 from .models import BlogPost
 
-class Index(ListView):
+class Index(ArchiveIndexView):
     template_name = "blog/index.html"
+    date_field = 'published'
     queryset = BlogPost.objects.filter(status__exact='Published').filter(status__exact='Published').filter(visibility__exact='Public')
     context_object_name = "objects"
 

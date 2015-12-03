@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <div class="container">
+  <section class="container">
     <div class="page-header">
-      <h1><small>Bryan@website:/$ python </small>Hello World!<small>.py</small></h1>
+      <h1><small>Index</small> Hello!</h1>
       </div>
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
@@ -14,8 +14,31 @@
           </p>
         </div>
       </div>
+  </section>
+
+{% if posts %}
+<section class="container">
+  <h2><small>Latest</small> Blog Posts</h2>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
       <div class="row">
-        <p class="lead text-center text-muted">More to come</p>
+        {% for post in posts %}
+        <div class="col-md-6">
+          <a href="{{ post.get_absolute_url }}"><h3>{{post.title}}</h3></a>
+          {% if post.excerpt %}
+          {{post.excerpt|safe}}
+          {% else %}
+          {{post.content|safe|truncatechars_html:140 }}
+          {% endif %}
+          <a href="{{ post.get_absolute_url }}" role="button" class="btn btn-default">
+            Read More
+          </a>
+        </div>
+        {% endfor %}
       </div>
+    </div>
   </div>
+</section>
+{% endif %}
+
 {% endblock %}
