@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="container">
+  <div class="page-header">
+    <h1><small>The</small> Blog</h1>
+  </div>
+<article class="marg-t2 marg-b2">
+  <header class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <h2>{{object.title}}</h2>
+    </div>
+  </header>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      {{object.content|safe }}
+    </div>
+  </div>
+</article>
+</section>
+
+{% endblock %}

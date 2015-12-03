@@ -35,8 +35,26 @@
       <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
           <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
             <a class="navbar-brand" href="/">Bryans<small>.website</small></a>
           </div>
+          <div class="collapse navbar-collapse" id="navbar">
+            <ul class="nav navbar-nav">
+              <li><a href="{% url 'blog:index' %}">Blog</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              {% if user.is_authenticated %}
+                <li><a href="{% url 'account_logout' %}"><i class="fa fa-sign-out"></i> Sign Out</a></li>
+              {% else %}
+              {% include 'account/includes/dropdown.html' %}
+              {% endif %}
+            </ul>
+          </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
       </nav>
       {% endblock %}
@@ -44,12 +62,23 @@
     {% endblock %}
 
     <main>
+      {% block messages %}
+        {% if messages %}
+        <section class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    {% include "messages.html" %}
+                </div>
+            </div>
+        </section>
+        {% endif %}
+        {% endblock %}
         {% block content %}
         {% endblock %}
     </main>
 
     {% block footer %}
-    <footer class="container-fluid text-center">
+    <footer class="container-fluid text-center marg-t4">
       <div class="text-center">
         <ul class="list-inline">
           <li><a href="https://github.com/bhhaskin" target="_blank"><i class="fa fa-github-square fa-2x"></i></a></li>

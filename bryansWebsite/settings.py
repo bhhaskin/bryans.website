@@ -41,7 +41,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.flatpages',
-    'userkey',
+    'post',
+    'blog',
     'core',
     'django_cleanup',
     'tinymce',
@@ -72,9 +73,13 @@ AUTHENTICATION_BACKENDS = (
 )
 
 # Allauth
-# ACCOUNT_ADAPTER  = "user.adapter.ClosedAccountAdapter"
+ACCOUNT_ADAPTER  = "core.adapter.ClosedAccountAdapter"
 ACCOUNT_AUTHENTICATION_METHOD = "username_email"
-ACCOUNT_EMAIL_VERIFICATION = "none"
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+# LOGIN_REDIRECT_URL = "account:index"
+LOGIN_URL = "account_login"
+
 
 ROOT_URLCONF = 'bryansWebsite.urls'
 

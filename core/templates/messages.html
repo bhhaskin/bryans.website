@@ -1,0 +1,6 @@
+{% for message in messages %}
+    <div class="alert alert-block alert-message alert-{% if message.tags == "error" %}danger{% else %}{{ message.tags }}{% endif %} alert-timeout">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>{{ message.tags|title }} {% if message.tags == "error" %}<i class="fa fa-exclamation-triangle"></i>{% elif message.tags == "info"  %}<i class="fa fa-info "></i>{% elif message.tags == "debug"  %}<i class="fa fa-keyboard-o "></i>{% endif %}</strong>: {{ message|safe }}
+    </div>
+{% endfor %}

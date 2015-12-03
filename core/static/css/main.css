@@ -12,3 +12,72 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   font-weight: 700;
   line-height: 32pt;
 }
+
+.form-login{
+  padding: 1em;
+  min-width: 280px; /* change width as per your requirement */
+}
+
+.pad-t1 {
+    padding-top: 10px;
+}
+
+.pad-t2 {
+    padding-top: 20px;
+}
+
+.pad-t3 {
+    padding-top: 50px;
+}
+
+.pad-t4 {
+    padding-top: 100px;
+}
+
+.marg-t1 {
+    margin-top: 10px;
+}
+
+.marg-t2 {
+    margin-top: 20px;
+}
+
+.marg-t3 {
+    margin-top: 50px;
+}
+
+.marg-t4 {
+    margin-top: 100px;
+}
+
+.pad-b1 {
+    padding-bottom: 10px;
+}
+
+.pad-b2 {
+    padding-bottom: 20px;
+}
+
+.pad-b3 {
+    padding-bottom: 50px;
+}
+
+.pad-b4 {
+    padding-bottom: 100px;
+}
+
+.marg-b1 {
+    margin-bottom: 10px;
+}
+
+.marg-b2 {
+    margin-bottom: 20px;
+}
+
+.marg-b3 {
+    margin-bottom: 50px;
+}
+
+.marg-b4 {
+    margin-bottom: 100px;
+}

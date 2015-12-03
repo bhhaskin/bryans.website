@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="container">
+  <div class="page-header">
+    <h1><small>The</small> Blog</h1>
+  </div>
+{% for object in objects %}
+<article class="marg-t2 marg-b2">
+  <header class="row">
+    <div class="col-md-10 col-md-offset-1">
+      {% autoescape off %}{% cycle '' '<hr class="marg-b3">' %}{% endautoescape %}
+      <a href="{{ object.get_absolute_url }}"><h2>{{object.title}}</h2></a>
+    </div>
+  </header>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      {% if object.excerpt %}
+      {{object.excerpt|safe}}
+      {% else %}
+      {{object.content|safe|truncatewords_html:150 }}
+      {% endif %}
+    </div>
+    <div class="col-md-8 col-md-offset-2 marg-t2 marg-b2">
+      <a href="{{ object.get_absolute_url }}" role="button" class="btn btn-default">
+        Read More
+      </a>
+    </div>
+  </div>
+</article>
+{% empty %}
+  <p class="lead text-center text-muted">Looks Like Nothing Is Here...</p>
+{% endfor %}
+</section>
+
+{% endblock %}

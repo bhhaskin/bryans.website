@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load account %}
+{% load i18n %}
+
+{% block header %}
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+{% block content %}
+    <div class="container pad-t2">
+        <h1 class="text-center">{% trans "Sign Up Closed" %}</h1>
+        <p class="lead text-center">{% trans "Sorry, but the sign up is currently closed." %}</p>
+        <p class="text-center">
+          <a href="{% url "account_login" %}">Go Back <i class="fa fa-angle-double-right"></i></a>
+        </p>
+    </div>
+{% endblock %}
