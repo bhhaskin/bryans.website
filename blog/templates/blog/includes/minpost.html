@@ -1,0 +1,10 @@
+<a href="{{ object.get_absolute_url }}"><h3>{{object.title}}</h3></a>
+<small title="{{ object.published|date:"F jS, Y, f A"  }}">{{ object.published|date:"F jS, Y"  }} by {{object.author}}</small>
+{% if object.excerpt %}
+{{object.excerpt|safe}}
+{% else %}
+{{object.content|safe|truncatechars_html:140 }}
+{% endif %}
+<a href="{{ object.get_absolute_url }}" role="button" class="btn btn-default">
+  Read More
+</a>

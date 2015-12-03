@@ -1,0 +1,32 @@
+<article class="container marg-t2 marg-b2">
+  <header class="row">
+    <div class="col-md-10 col-md-offset-1">
+      {% if not forloop.first %}<hr class="marg-b3">{% endif %}
+      <a href="{{ object.get_absolute_url }}"><h2>{{object.title}}</h2></a>
+      <small title="{{ object.published|date:"F jS, Y, f A"  }}">{{ object.published|date:"F jS, Y"  }} by {{object.author}}</small>
+    </div>
+  </header>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      {% if object.excerpt %}
+      {{object.excerpt|safe}}
+      {% else %}
+      {{object.content|safe|truncatewords_html:150 }}
+      {% endif %}
+    </div>
+    <div class="col-md-8 col-md-offset-2 marg-t2 marg-b2">
+      <a href="{{ object.get_absolute_url }}" role="button" class="btn btn-default">
+        Read More
+      </a>
+    </div>
+  </div>
+  <footer class="row">
+    <div class="col-md-10 col-md-offset-1">
+        Posted in {% for category in object.categories.all  %}{% if not forloop.first %}, {% endif %} <a href="{{ category.get_absolute_url }}">{{ category.category }}</a>{% empty %}<a href="{% url "blog:category" "uncategorized" %}">Uncategorized</a>{% endfor %}
+        {% if object.tags %}
+        <br>
+        Tags: {% for tag in object.tags.all %} <a href="{{ tag.get_absolute_url }}"><span class="label label-primary">{{ tag.tag }}</span></a> {% endfor %}
+        {% endif %}
+    </div>
+  </footer>
+</article>

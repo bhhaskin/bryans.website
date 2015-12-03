@@ -32,3 +32,23 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+class Category(models.Model):
+    category = models.CharField(max_length=70, unique=True)
+    parent = models.ForeignKey('self', null=True, blank=True, related_name='categoryParent')
+    class Meta:
+        abstract = True
+        verbose_name = "Category"
+        verbose_name_plural = "Categories"
+    def __unicode__(self):
+        return self.category
+
+class Tag(models.Model):
+    tag = models.CharField(max_length=70, unique=True)
+    class Meta:
+        abstract = True
+        verbose_name = "Tag"
+        verbose_name_plural = "Tags"
+        ordering = ['tag']
+    def __unicode__(self):
+        return self.tag

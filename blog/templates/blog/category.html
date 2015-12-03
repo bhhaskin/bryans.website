@@ -3,7 +3,7 @@
 {% block content %}
 <section class="container">
   <div class="page-header">
-    <h1><small>The</small> Blog</h1>
+    <h1><small>The</small> Blog <small>- All Posts In {% if category %}{{ category.category }} Category{% else %}Uncategorized{% endif %}</small></h1>
   </div>
 </section>
 

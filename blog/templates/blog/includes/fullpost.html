@@ -1,0 +1,23 @@
+
+<article class="container marg-t2 marg-b2">
+  <header class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <h2>{{object.title}}</h2>
+      <small title="{{ object.published|date:"F jS, Y, f A"  }}">{{ object.published|date:"F jS, Y"  }} by {{object.author}}</small>
+    </div>
+  </header>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      {{object.content|safe }}
+    </div>
+  </div>
+  <footer class="row">
+    <div class="col-md-10 col-md-offset-1">
+      Posted in {% for category in object.categories.all  %}{% if not forloop.first %}, {% endif %} <a href="{{ category.get_absolute_url }}">{{ category.category }}</a>{% empty %}<a href="{% url "blog:category" "uncategorized" %}">Uncategorized</a>{% endfor %}
+        {% if object.tags %}
+        <br>
+        Tags: {% for tag in object.tags.all %} <a href="{{ tag.get_absolute_url }}"><span class="label label-primary">{{ tag.tag }}</span></a> {% endfor %}
+        {% endif %}
+    </div>
+  </footer>
+</article>
