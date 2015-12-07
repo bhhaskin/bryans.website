@@ -15,4 +15,13 @@
   </section>
 {% endfor %}
 
+{% if is_paginated %}
+<nav class="container">
+  <ul class="pager">
+    <li class="previous {% if not page_obj.has_next %}disabled{% endif %}"><a href="{% if page_obj.has_next %}?page={{page_obj.next_page_number}}{% else %}#{% endif %}"><i class="fa fa-chevron-left"></i> Older</a></li>
+    <li class="next {% if not page_obj.has_previous %}disabled{% endif %}"><a href="{% if page_obj.has_previous %}?page={{page_obj.previous_page_number}}{% else %}#{% endif %}">Newer <i class="fa fa-chevron-right"></i></a></li>
+  </ul>
+</nav>
+{% endif %}
+
 {% endblock %}

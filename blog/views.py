@@ -5,6 +5,7 @@ from .models import BlogPost, BlogCategory, BlogTag
 
 class Index(ArchiveIndexView):
     template_name = "blog/index.html"
+    paginate_by = 5
     date_field = 'published'
     queryset = BlogPost.objects.filter(status__exact='Published').filter(status__exact='Published').filter(visibility__exact='Public')
     context_object_name = "objects"
@@ -24,6 +25,7 @@ class Detail(DateDetailView):
 
 class CategoryListView(ListView):
     template_name = "blog/category.html"
+    paginate_by = 5
     context_object_name = "objects"
     def get_queryset(self):
         if self.kwargs['slug'] == "uncategorized":
@@ -41,6 +43,7 @@ class CategoryListView(ListView):
 
 class TagListView(ListView):
     template_name = "blog/tag.html"
+    paginate_by = 5
     context_object_name = "objects"
     def get_queryset(self):
         tag = get_object_or_404(BlogTag, slug=self.kwargs['slug'])
@@ -53,6 +56,7 @@ class TagListView(ListView):
 
 class YearArchive(YearArchiveView):
     template_name = "blog/year.html"
+    paginate_by = 5
     date_field = 'published'
     queryset = BlogPost.objects.filter(status__exact='Published').filter(status__exact='Published').filter(visibility__exact='Public')
     context_object_name = "objects"
@@ -63,6 +67,7 @@ class YearArchive(YearArchiveView):
 
 class MonthArchive(MonthArchiveView):
     template_name = "blog/month.html"
+    paginate_by = 5
     date_field = 'published'
     queryset = BlogPost.objects.filter(status__exact='Published').filter(status__exact='Published').filter(visibility__exact='Public')
     context_object_name = "objects"
@@ -74,6 +79,7 @@ class MonthArchive(MonthArchiveView):
 
 class DayArchive(DayArchiveView):
     template_name = "blog/day.html"
+    paginate_by = 5
     date_field = 'published'
     queryset = BlogPost.objects.filter(status__exact='Published').filter(status__exact='Published').filter(visibility__exact='Public')
     context_object_name = "objects"

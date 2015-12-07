@@ -80,7 +80,7 @@ ACCOUNT_ADAPTER  = "core.adapter.ClosedAccountAdapter"
 ACCOUNT_AUTHENTICATION_METHOD = "username_email"
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
-# LOGIN_REDIRECT_URL = "account:index"
+LOGIN_REDIRECT_URL = "index"
 LOGIN_URL = "account_login"
 
 
@@ -108,7 +108,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR + '/static/'
+STATIC_ROOT = '/srv/static/'
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -119,6 +119,6 @@ STATICFILES_FINDERS = (
 STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR + '/media/'
+MEDIA_ROOT = '/srv/media/'
 
 from secret_settings import *
