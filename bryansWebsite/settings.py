@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'django.contrib.flatpages',
     'django.contrib.humanize',
     'pipeline',
+    'mediaLib',
     'post',
     'blog',
     'stream',
@@ -107,7 +108,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '//static.bryans.website/'
 STATIC_ROOT = '/srv/static/'
 
 STATICFILES_FINDERS = (
@@ -118,7 +119,7 @@ STATICFILES_FINDERS = (
 
 STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 
-MEDIA_URL = '/media/'
+MEDIA_URL = '//media.bryans.website/'
 MEDIA_ROOT = '/srv/media/'
 
 from secret_settings import *
